@@ -10,10 +10,6 @@ dt {
   font-weight: bold;
 }
 
-.gap-1 {
-  gap: .25rem;
-}
-
-.gap-2 {
-  gap: .5rem;
+.text-color-primary {
+  color: rgb(var(--v-theme-primary))
 }
