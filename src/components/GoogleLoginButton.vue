@@ -13,7 +13,7 @@ function render() {
   google.accounts.id.renderButton(button.value, {
     type: "standard",
     theme: "outline",
-    size: "large",
+    size: "medium",
     text: "signin",
     shape: "rectangular"
   });
@@ -31,5 +31,13 @@ watch(
 </script>
 
 <template>
-  <div ref="button"></div>
+  <div ref="button" class="hide-background"></div>
 </template>
+
+<style scoped>
+.hide-background {
+  /* Remove white background from button */
+  border-radius: 4px;
+  overflow: hidden;
+}
+</style>

@@ -15,7 +15,7 @@ export function install(app: any, options = defaultOptions) {
   const loaded = ref(false);
   app.provide(googleAccountsLoadedKey, loaded);
 
-  // @ts-expect-error This exists, trust me bro (https://developers.google.com/identity/gsi/web/reference/js-reference#onGoogleLibraryLoad)
+  // @ts-expect-error This exists, loaded by cdn (https://developers.google.com/identity/gsi/web/reference/js-reference#onGoogleLibraryLoad)
   window.onGoogleLibraryLoad = () => {
     google.accounts.id.initialize({
       client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
