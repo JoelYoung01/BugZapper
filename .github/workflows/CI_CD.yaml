@@ -9,6 +9,6 @@ jobs:
   BuildApp:
     uses: ./.github/workflows/BuildApp.yml
     with:
-      image_name: recipe-db
+      image_name: ${{ vars.IMAGE_NAME }}
     secrets:
       GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
