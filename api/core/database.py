@@ -16,9 +16,7 @@ def get_session():
         yield session
 
 
-SessionDep: type[Annotated[Session, Depends(get_session)]] = Annotated[
-    Session, Depends(get_session)
-]
+SessionDep = Annotated[Session, Depends(get_session)]
 
 
 def init_db(session: Session) -> None:
