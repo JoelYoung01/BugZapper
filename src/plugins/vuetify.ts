@@ -6,6 +6,7 @@ import { createVuetify, type ThemeDefinition } from "vuetify";
 // To customize SASS variables, follow the guide here: https://vuetifyjs.com/en/features/sass-variables
 
 const grey = "#3e434b";
+const lighterGrey = "#4A5059";
 const yellow = "#ffe120";
 
 const MainTheme: ThemeDefinition = {
@@ -13,7 +14,7 @@ const MainTheme: ThemeDefinition = {
   colors: {
     // Add color overrides here
     background: grey,
-    surface: grey,
+    surface: lighterGrey,
     primary: yellow
   },
   variables: {

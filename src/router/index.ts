@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "@/views/LoginView.vue";
 import { useSessionStore } from "@/stores/session";
 import LandingPage from "@/views/LandingPage.vue";
+import NotFound from "@/views/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +23,11 @@ const router = createRouter({
       meta: {
         noAuthReq: true
       }
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "notFound",
+      component: NotFound
     }
   ]
 });
