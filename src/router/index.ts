@@ -3,6 +3,7 @@ import LoginView from "@/views/LoginView.vue";
 import { useSessionStore } from "@/stores/session";
 import LandingPage from "@/views/LandingPage.vue";
 import NotFound from "@/views/NotFound.vue";
+import GetStarted from "@/views/GetStarted.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +13,14 @@ const router = createRouter({
       alias: "/",
       name: "Landing Page",
       component: LandingPage,
+      meta: {
+        noAuthReq: true
+      }
+    },
+    {
+      path: "/get-started",
+      name: "Get Started",
+      component: GetStarted,
       meta: {
         noAuthReq: true
       }
