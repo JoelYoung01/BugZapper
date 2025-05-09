@@ -60,7 +60,7 @@ const apps = ref<string[]>([]);
       <FadeIn>
         <v-row>
           <v-col cols="12" md="4">
-            <v-card>
+            <v-card class="h-100">
               <v-card-title class="text-center text-primary">1 App</v-card-title>
               <v-card-subtitle class="text-center">Free</v-card-subtitle>
               <v-card-text class="text-center">
@@ -69,7 +69,7 @@ const apps = ref<string[]>([]);
             </v-card>
           </v-col>
           <v-col cols="12" md="4">
-            <v-card>
+            <v-card class="h-100">
               <v-card-title class="text-center text-primary">Up to 5 Apps</v-card-title>
               <v-card-subtitle class="text-center">$5/mo</v-card-subtitle>
               <v-card-text class="text-center">
@@ -78,7 +78,7 @@ const apps = ref<string[]>([]);
             </v-card>
           </v-col>
           <v-col cols="12" md="4">
-            <v-card>
+            <v-card class="h-100">
               <v-card-title class="text-center text-primary">More than 5 Apps</v-card-title>
               <v-card-subtitle class="text-center">$1/mo per app</v-card-subtitle>
               <v-card-text class="text-center">

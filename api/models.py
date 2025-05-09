@@ -74,44 +74,20 @@ class Upload(BaseIndexedDbModel, table=True):
     created_by: "User" = Relationship()
 
 
-class Recipe(BaseIndexedDbModel, table=True):
+class Application(BaseIndexedDbModel, table=True):
     created_by_id: int = Field(foreign_key="user.id")
     created_on: datetime = Field(sa_type=UTCDateTime)
     name: str
+
+    created_by: "User" = Relationship()
+
+
+class Report(BaseIndexedDbModel, table=True):
+    created_by_id: int = Field(foreign_key="user.id")
+    created_on: datetime = Field(sa_type=UTCDateTime)
+    title: str
     description: str
-    instructions: str
-    notes: str | None
-    public: bool = False
-    prep_time: float | None = None
-    cover_image_id: int | None = Field(foreign_key="upload.id", default=None)
+    application_id: int = Field(foreign_key="application.id")
 
     created_by: "User" = Relationship()
-    ingredients: list["Ingredient"] = Relationship(
-        back_populates="recipe",
-        cascade_delete=True,
-    )
-    planned: list["PlannedRecipe"] = Relationship(back_populates="recipe")
-    cover_image: "Upload" = Relationship()
-
-
-class Ingredient(BaseIndexedDbModel, table=True):
-    created_by_id: int = Field(foreign_key="user.id")
-    created_on: datetime = Field(sa_type=UTCDateTime)
-    name: str
-    amount: float | None = None
-    units: str | None = None
-    details: str | None = None
-    recipe_id: int = Field(foreign_key="recipe.id")
-
-    recipe: "Recipe" = Relationship(back_populates="ingredients")
-    created_by: "User" = Relationship()
-
-
-class PlannedRecipe(BaseIndexedDbModel, table=True):
-    recipe_id: int = Field(foreign_key="recipe.id")
-    created_by_id: int = Field(foreign_key="user.id")
-    created_on: datetime = Field(sa_type=UTCDateTime)
-    planned_for: datetime = Field(sa_type=UTCDateTime)
-
-    created_by: "User" = Relationship()
-    recipe: "Recipe" = Relationship()
+    application: "Application" = Relationship()
