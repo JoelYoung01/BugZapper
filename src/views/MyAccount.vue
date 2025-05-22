@@ -131,8 +131,9 @@ async function updateDisplayName() {
       </v-list>
     </div>
 
-    <div class="d-flex justify-center">
-      <v-btn color="primary" @click="logOut()">Log Out</v-btn>
+    <div class="d-flex flex-column align-center gap-2">
+      <v-btn color="primary" to="/landing" prepend-icon="mdi-home">Home</v-btn>
+      <v-btn color="primary" variant="outlined" @click="logOut()">Log Out</v-btn>
     </div>
   </v-container>
 </template>
