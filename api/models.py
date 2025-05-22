@@ -26,6 +26,12 @@ class BaseIndexedDbModel(BaseDbModel):
     id: int | None = Field(default=None, index=True, primary_key=True)
 
 
+class SubscriptionLevel(Enum):
+    FREE = None
+    PRO = 10
+    ENTERPRISE = 20
+
+
 class User_Permission(BaseDbModel, table=True):
     user_id: int = Field(default=None, foreign_key="user.id", primary_key=True)
     permission_id: int = Field(
@@ -44,6 +50,7 @@ class User(BaseIndexedDbModel, table=True):
     last_login: datetime | None = Field(
         default_factory=lambda: datetime.now(tz=timezone.utc), sa_type=UTCDateTime
     )
+    sub_level: SubscriptionLevel = SubscriptionLevel.FREE
 
     tokens: list["Token"] = Relationship(back_populates="user")
     permissions: list["Permission"] = Relationship(link_model=User_Permission)
