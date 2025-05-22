@@ -1,33 +1,46 @@
 <script setup lang="ts">
 import BugZapLogoTransparent from "@/assets/bugzapper-transparent.png";
 import FadeIn from "@/components/FadeIn.vue";
-import { ref } from "vue";
+import { useSessionStore } from "@/stores/session";
 
-const searchText = ref("");
-const apps = ref<string[]>([]);
+const sessionStore = useSessionStore();
 </script>
 
 <template>
   <v-container max-width="500">
     <div class="header-bar d-flex text-black font-weight-bold">
       <v-spacer />
-      <RouterLink to="login">Log In</RouterLink>
+      <RouterLink v-if="!sessionStore.isLoggedIn" to="login">Log In</RouterLink>
+      <RouterLink v-else to="account">Account</RouterLink>
     </div>
 
     <section id="title">
       <div class="mx-auto">
         <v-img :src="BugZapLogoTransparent" width="200" aspect-ratio="1" />
       </div>
-      <h1 class="text-center text-h2 font-weight-bold mb-10">Bug Zapper</h1>
-      <v-autocomplete
-        v-model="searchText"
-        variant="outlined"
-        label="Find an app"
-        class="flex-grow-0"
-        :items="apps"
-        rounded
-        append-inner-icon="mdi-magnify"
-      />
+      <h1 class="text-center text-h2 font-weight-bold mb-8">Bug Zapper</h1>
+      <div>
+        <v-btn
+          to="/bug/report/"
+          color="primary"
+          variant="outlined"
+          class="w-100 mb-5"
+          rounded
+          size="large"
+        >
+          Report a Bug
+        </v-btn>
+        <v-btn
+          to="/feature/request/"
+          color="primary"
+          variant="outlined"
+          rounded
+          size="large"
+          class="w-100 mb-5"
+        >
+          Request a Feature
+        </v-btn>
+      </div>
     </section>
 
     <section id="about">
@@ -59,27 +72,27 @@ const apps = ref<string[]>([]);
       <h2 class="text-h4 font-weight-bold mb-5">Register Your App</h2>
       <FadeIn>
         <v-row>
-          <v-col cols="12" md="4">
+          <v-col cols="12" lg="4">
             <v-card class="h-100">
-              <v-card-title class="text-center text-primary">1 App</v-card-title>
+              <div class="text-h6 px-2 py-3 text-center text-primary">1 App</div>
               <v-card-subtitle class="text-center">Free</v-card-subtitle>
               <v-card-text class="text-center">
                 Perfect for small projects or personal use.
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" lg="4">
             <v-card class="h-100">
-              <v-card-title class="text-center text-primary">Up to 5 Apps</v-card-title>
+              <div class="text-h6 px-2 py-3 text-center text-primary">Up to 5 Apps</div>
               <v-card-subtitle class="text-center">$5/mo</v-card-subtitle>
               <v-card-text class="text-center">
                 Ideal for small teams and growing projects.
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" lg="4">
             <v-card class="h-100">
-              <v-card-title class="text-center text-primary">More than 5 Apps</v-card-title>
+              <div class="text-h6 px-2 py-3 text-center text-primary">More than 5 Apps</div>
               <v-card-subtitle class="text-center">$1/mo per app</v-card-subtitle>
               <v-card-text class="text-center">
                 Best for larger teams and enterprises.
@@ -102,6 +115,7 @@ section {
   justify-content: center;
   padding-bottom: 4rem;
   min-height: 100vh;
+  gap: 1rem;
 }
 
 .header-bar {
@@ -109,6 +123,6 @@ section {
 }
 
 #title {
-  min-height: calc(100vh - 4rem);
+  min-height: calc(100vh - 3rem);
 }
 </style>

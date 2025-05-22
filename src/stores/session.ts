@@ -12,6 +12,8 @@ export const useSessionStore = defineStore("session", () => {
   const currentUser = ref<UserResponse | null>(null);
   const loading = ref(false);
 
+  const isLoggedIn = computed(() => currentUser.value !== null);
+
   async function checkSession() {
     if (loading.value) return;
     loading.value = true;
@@ -58,5 +60,5 @@ export const useSessionStore = defineStore("session", () => {
   );
 
   checkSession();
-  return { currentUser, loading, checkSession, logout };
+  return { currentUser, loading, isLoggedIn, checkSession, logout };
 });
