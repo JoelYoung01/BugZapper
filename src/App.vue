@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterView, useRoute } from "vue-router";
+import NavbarHeader from "./components/NavbarHeader.vue";
 
 const route = useRoute();
 
@@ -17,6 +18,7 @@ const mainClassList = computed(() => {
 <template>
   <v-app>
     <v-main :class="mainClassList">
+      <NavbarHeader />
       <RouterView />
     </v-main>
   </v-app>

@@ -1,19 +1,10 @@
 <script setup lang="ts">
 import BugZapLogoTransparent from "@/assets/bugzapper-transparent.png";
 import FadeIn from "@/components/FadeIn.vue";
-import { useSessionStore } from "@/stores/session";
-
-const sessionStore = useSessionStore();
 </script>
 
 <template>
   <v-container max-width="500">
-    <div class="header-bar d-flex text-black font-weight-bold">
-      <v-spacer />
-      <RouterLink v-if="!sessionStore.isLoggedIn" to="login">Log In</RouterLink>
-      <RouterLink v-else to="account">Account</RouterLink>
-    </div>
-
     <section id="title">
       <div class="mx-auto">
         <v-img :src="BugZapLogoTransparent" width="200" aspect-ratio="1" />
@@ -118,11 +109,7 @@ section {
   gap: 1rem;
 }
 
-.header-bar {
-  margin-bottom: 1rem;
-}
-
 #title {
-  min-height: calc(100vh - 3rem);
+  min-height: calc(100vh - 5rem);
 }
 </style>
