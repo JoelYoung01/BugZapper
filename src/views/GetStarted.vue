@@ -61,11 +61,26 @@ const selectPlan = (plan: string) => {
           <div class="">+ Up to 10 Apps</div>
         </v-card>
 
-        <v-btn color="primary" block size="large" @click="currentStep = 2">Next</v-btn>
+        <v-btn
+          color="primary"
+          :disabled="selectedPlan === 'free'"
+          block
+          size="large"
+          @click="currentStep = 2"
+          >Next</v-btn
+        >
       </v-window-item>
 
       <v-window-item :value="2">
-        <v-card class="py-3 px-5 mb-3"></v-card>
+        <v-card class="py-3 px-5 mb-3">
+          <p>
+            <span class="text-primary">Unfortuantely</span>, I haven't set up payment processing
+            yet. So you can't actually sign up for this tier. But you can sign up for the
+            <span class="text-primary">Hobby</span> tier for free. Once I set up payment processing,
+            you can updgrade to the <span class="text-primary">Pro</span> or
+            <span class="text-primary">Enterprise</span> tier!
+          </p>
+        </v-card>
 
         <v-btn color="primary" block size="large" @click="currentStep = 1">Back</v-btn>
       </v-window-item>
